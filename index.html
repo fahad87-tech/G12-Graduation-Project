@@ -41,7 +41,7 @@ function openTopics(){
                 <div class="top-bar" style="background:rgb(${c})"></div>
                 <div class="group-num" style="color:rgb(${c}); font-size:0.75rem;">Group ${p.group}</div>
                 <h4 style="font-size:0.95rem; margin-bottom:0.5rem; line-height:1.3;">${p.title}</h4>
-                
+                <div style="font-size:0.85rem; margin-top:8px;"><span style="color:rgb(${c}); font-weight:600;">👤 Students: </span><span style="color:rgba(255,255,255,0.85);">${p.students.join(", ")}</span></div>
             </div>`;
         });
         html+=`</div>`;
