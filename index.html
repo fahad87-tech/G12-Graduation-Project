@@ -36,12 +36,16 @@ function openTopics(){
         let cat=DATA[key];
         let c=COLORS[key];
         html+=`<h4 style="color:rgb(${c}); margin-top:2rem; border-bottom:2px solid rgba(${c},0.3); padding-bottom:0.5rem; font-family:Outfit,sans-serif; font-size:1.5rem;">${cat.name}</h4><div class="projects-grid" style="margin-top:1rem; display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1rem;">`;
-        cat.projects.forEach(p=>{
-            html+=`<div class="project-card" style="border:1px solid rgba(${c},0.3); padding:1.2rem;">
+        cat.projects.forEach((p, idx)=>{
+            html+=`<div class="project-card animate-in" style="border:1px solid rgba(${c},0.3); animation-delay:${idx*0.08}s" onclick="this.classList.toggle('expanded')">
                 <div class="top-bar" style="background:rgb(${c})"></div>
-                <div class="group-num" style="color:rgb(${c}); font-size:0.75rem;">Group ${p.group}</div>
-                <h4 style="font-size:0.95rem; margin-bottom:0.5rem; line-height:1.3;">${p.title}</h4>
-                <div style="font-size:0.85rem; margin-top:8px;"><span style="color:rgb(${c}); font-weight:600;">👤 Students: </span><span style="color:rgba(255,255,255,0.85);">${p.students.join(", ")}</span></div>
+                <div class="group-num" style="color:rgb(${c})">Group ${p.group}</div>
+                <h4>${p.title}</h4>
+                <div class="meta">
+                    <div class="meta-item"><span style="color:rgb(${c})">👤 Students:</span><span class="val">${p.students.join(", ")}</span></div>
+                    <div class="meta-item"><span style="color:rgb(${c})">🎓 Supervisor:</span><span class="val">${p.supervisor}</span></div>
+                </div>
+                <div class="collapse-hint">Click to collapse</div>
             </div>`;
         });
         html+=`</div>`;
